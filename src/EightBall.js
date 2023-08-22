@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
+import "./EightBall.css";
 
-const answers =[
+const defaultAnswers =[
   { msg: "It is certain.", color: "green" },
   { msg: "It is decidedly so.", color: "green" },
   { msg: "Without a doubt.", color: "green" },
@@ -23,7 +24,7 @@ const answers =[
   { msg: "Very doubtful.", color: "red" },
 ];
 
-function EightBall({ answers=answers }) {
+function EightBall({ answers=defaultAnswers }) {
   const [color, setColor] = useState("black");
   const [message, setMessage] = useState("Think of a question");
 
@@ -34,8 +35,10 @@ function EightBall({ answers=answers }) {
     setMessage(answer.msg);
   }
 
+  const btn = document.getElementById("btn");
+
   return (
-    <button className="btn" onClick={handleClick}>
+    <button id= "btn" className="btn" onClick={handleClick} style={{backgroundColor: color}}>
       <b>{message}</b>
     </button>
   );
